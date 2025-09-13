@@ -16,8 +16,15 @@ export class Triangle implements Figure {
     private b: number,
     private c: number,
   ) {
-    if (a <= 0 || b <= 0 || c <= 0) {
-      throw new Error('the sides should be more than 0 in length');
+    if (
+      !Number.isFinite(a) ||
+      a <= 0 ||
+      !Number.isFinite(b) ||
+      b <= 0 ||
+      !Number.isFinite(c) ||
+      c <= 0
+    ) {
+      throw new Error('Triangle sides must be a finite number greater than 0');
     }
 
     if (a >= b + c || b >= a + c || c >= a + b) {
@@ -43,8 +50,8 @@ export class Circle implements Figure {
     public color: Color,
     private a: number,
   ) {
-    if (a <= 0) {
-      throw new Error('the radius should be more than 0 in length');
+    if (!Number.isFinite(a) || a <= 0) {
+      throw new Error('Radius must be a finite number greater than 0');
     }
   }
 
@@ -61,8 +68,8 @@ export class Rectangle implements Figure {
     private a: number,
     private b: number,
   ) {
-    if (a <= 0 || b <= 0) {
-      throw new Error('the sides should be more than 0 in length');
+    if (!Number.isFinite(a) || a <= 0 || !Number.isFinite(b) || b <= 0) {
+      throw new Error('Rectangle sides must be a finite number greater than 0');
     }
   }
 
