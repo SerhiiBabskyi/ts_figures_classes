@@ -16,15 +16,16 @@ export class Triangle implements Figure {
     private b: number,
     private c: number,
   ) {
-    if (
-      !Number.isFinite(a) ||
-      a <= 0 ||
-      !Number.isFinite(b) ||
-      b <= 0 ||
-      !Number.isFinite(c) ||
-      c <= 0
-    ) {
-      throw new Error('Triangle sides must be a finite number greater than 0');
+    if (!Number.isFinite(a) || a <= 0) {
+      throw new Error('Triangle side a must be a finite number greater than 0');
+    }
+
+    if (!Number.isFinite(b) || b <= 0) {
+      throw new Error('Triangle side b must be a finite number greater than 0');
+    }
+
+    if (!Number.isFinite(c) || c <= 0) {
+      throw new Error('Triangle side c must be a finite number greater than 0');
     }
 
     if (a >= b + c || b >= a + c || c >= a + b) {
@@ -68,8 +69,14 @@ export class Rectangle implements Figure {
     private a: number,
     private b: number,
   ) {
-    if (!Number.isFinite(a) || a <= 0 || !Number.isFinite(b) || b <= 0) {
-      throw new Error('Rectangle sides must be a finite number greater than 0');
+    if (!Number.isFinite(a) || a <= 0) {
+      throw new Error('Rectangle width must be a finite number greater than 0');
+    }
+
+    if (!Number.isFinite(b) || b <= 0) {
+      throw new Error(
+        'Rectangle height must be a finite number greater than 0',
+      );
     }
   }
 
